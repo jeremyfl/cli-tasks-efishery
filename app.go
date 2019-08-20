@@ -4,30 +4,42 @@ import (
 	"context"
 	"fmt"
 
-	// "github.com/flimzy/kivik"       // Stable version of Kivik
 	_ "github.com/go-kivik/couchdb" // The CouchDB driver
-	"github.com/go-kivik/kivik"     // Development version of Kivik
+	"github.com/go-kivik/kivik"
+	"github.com/jeremylombogia/cli-tasks-efishery/configs"
+	"github.com/jeremylombogia/cli-tasks-efishery/internal"
 )
 
 func main() {
-	client, err := kivik.New("couch", "http://admin:iniadmin@13.250.43.79:5984/")
+	db := configs.Init()
+
+	task := internal.Task{
+		Content: "Lorem ipsum",
+		IsDone:  false,
+	}
+
+	_, _, err := db.CreateDoc(context.TODO(), task)
+	if err != nil {
+		panic(err)
+	}
+
+	rows, err := db.AllDocs(context.TODO(), kivik.Options{"include_docs": true})
 
 	if err != nil {
 		panic(err)
 	}
 
-	db := client.DB(context.TODO(), "efishery_task_test")
+	for rows.Next() {
+		var tasks internal.Task
 
-	doc := map[string]interface{}{
-		"_id":      "cow",
-		"feet":     4,
-		"greeting": "moo",
+		if err = rows.ScanDoc(&tasks); err != nil {
+			panic(err)
+		}
+
+		fmt.Println(tasks)
 	}
 
-	rev, err := db.Put(context.TODO(), "cow", doc)
-	if err != nil {
-		panic(err)
+	if rows.Err() != nil {
+		panic(rows.Err())
 	}
-
-	fmt.Printf("Cow inserted with revision %s\n", rev)
 }
