@@ -11,7 +11,6 @@ func InsertTask() {
 
 	var taskDone, err = internal.Store(&task)
 	if err != nil {
-		fmt.Println("Err")
 		panic(err)
 	}
 
