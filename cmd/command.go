@@ -6,6 +6,7 @@ import (
 	"github.com/jeremylombogia/cli-tasks-efishery/internal"
 )
 
+// InsertTask it store repositories and return a struct model of it task
 func InsertTask() {
 	var task = internal.Task{"Lorem ipsum dolor si amet", false, "College"}
 
@@ -17,6 +18,7 @@ func InsertTask() {
 	fmt.Println(taskDone)
 }
 
+// FetchTask read all of document as a struct model
 func FetchTask() {
 	var rows, _ = internal.Fetch()
 

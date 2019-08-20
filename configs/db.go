@@ -10,6 +10,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// Init the database and return as kivik.DB
 func Init() *kivik.DB {
 	if err := godotenv.Load(); err != nil {
 		log.Fatal("Error loading .env file")
