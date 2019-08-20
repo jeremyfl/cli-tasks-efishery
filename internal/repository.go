@@ -9,6 +9,7 @@ import (
 
 var db = configs.Init()
 
+// Fetch all data and return it rows
 func Fetch() (*kivik.Rows, error) {
 	rows, err := db.AllDocs(context.TODO(), kivik.Options{"include_docs": true})
 
