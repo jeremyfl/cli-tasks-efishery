@@ -27,6 +27,12 @@ go get -u github.com/go-kivik/kivik
 go get -u github.com/go-kivik/couchdb
 ```
 
+### Setup Environment
+
+```
+cp .env.example .env
+```
+
 ## Running the test
 
 Soon updated ~
