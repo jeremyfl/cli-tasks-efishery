@@ -1,38 +1,31 @@
 package main
 
 import (
-	"context"
 	"fmt"
 
 	_ "github.com/go-kivik/couchdb" // The CouchDB driver
-	"github.com/go-kivik/kivik"
-	"github.com/jeremylombogia/cli-tasks-efishery/configs"
 	"github.com/jeremylombogia/cli-tasks-efishery/internal"
 )
 
-func main() {
-	db := configs.Init()
+func insertTask() {
+	var task = internal.Task{"Lorem ipsum dolor si amet", false, "College"}
 
-	task := internal.Task{
-		Content: "Lorem ipsum",
-		IsDone:  false,
-	}
-
-	_, _, err := db.CreateDoc(context.TODO(), task)
+	var taskDone, err = internal.Store(&task)
 	if err != nil {
+		fmt.Println("Err")
 		panic(err)
 	}
 
-	rows, err := db.AllDocs(context.TODO(), kivik.Options{"include_docs": true})
+	fmt.Println(taskDone)
+}
 
-	if err != nil {
-		panic(err)
-	}
+func fetchTask() {
+	var rows, _ = internal.Fetch()
 
 	for rows.Next() {
 		var tasks internal.Task
 
-		if err = rows.ScanDoc(&tasks); err != nil {
+		if err := rows.ScanDoc(&tasks); err != nil {
 			panic(err)
 		}
 
@@ -42,4 +35,8 @@ func main() {
 	if rows.Err() != nil {
 		panic(rows.Err())
 	}
+}
+
+func main() {
+	fetchTask()
 }
