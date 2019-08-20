@@ -15,7 +15,7 @@ func Init() *kivik.DB {
 		log.Fatal("Error loading .env file")
 	}
 
-	client, err := kivik.New("couch", "http://admin:iniadmin@13.250.43.79:5984/")
+	client, err := kivik.New("couch", os.Getenv("DB_URL"))
 	if err != nil {
 		panic(err)
 	}
