@@ -10,7 +10,7 @@ Applications that work as well offline as they do online.
 
 - Go
 - PouchDB or CouchDB
-- Kivic (PouchDB & CouchDB Library for GO)
+- Kivik (PouchDB & CouchDB Library for GO)
 
 ## Geting Started
 
@@ -20,7 +20,7 @@ Applications that work as well offline as they do online.
 brew install go
 ```
 
-### Install Kivic
+### Install Kivik
 
 ```
 go get -u github.com/go-kivik/kivik
