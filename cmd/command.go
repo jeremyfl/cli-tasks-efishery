@@ -23,7 +23,14 @@ func InsertTask() {
 		panic(err)
 	}
 
-	fmt.Println(taskDone)
+	fmt.Println("Insert created ✅")
+	fmt.Print("Content: ")
+	fmt.Println(taskDone.Content)
+	fmt.Print("Done?: ")
+	fmt.Println(taskDone.IsDone)
+	fmt.Print("Tag: ")
+	fmt.Println(taskDone.Tag)
+	fmt.Println()
 }
 
 // FetchTask read all of document as a struct model
