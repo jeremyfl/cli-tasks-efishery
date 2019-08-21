@@ -33,6 +33,12 @@ go get -u github.com/go-kivik/couchdb
 cp .env.example .env
 ```
 
+### Run the CLI
+
+```
+go run app.go
+```
+
 ## Running the test
 
 Soon updated ~
