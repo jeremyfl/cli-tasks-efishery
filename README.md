@@ -41,4 +41,6 @@ go run app.go
 
 ## Running the test
 
-Soon updated ~
+```
+go test cmd/command_test.go
+```
