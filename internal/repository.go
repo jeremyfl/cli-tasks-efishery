@@ -43,8 +43,9 @@ func Update(id string, task *Task) (Task, error) {
 
 // Replicate it replicate the target db from local db
 func Replicate() {
-	var _, err = client.Replicate(context.TODO(), os.Getenv("DB_URL"), os.Getenv("DB_LOCAL_URL"))
+	var _, err = client.Replicate(context.TODO(), os.Getenv("DB_URL"), os.Getenv("DB_LOCAL_URL")+os.Getenv("DB_NAME"))
 	if err != nil {
 		panic(err)
 	}
+
 }

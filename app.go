@@ -7,7 +7,7 @@ import (
 
 func main() {
 	cmd.InsertTask()
-	// cmd.FetchTask()
+	cmd.FetchTask()
 	// cmd.UpdateTask("bles1osllhcklvh3pm1g")
 
 	internal.Replicate()
