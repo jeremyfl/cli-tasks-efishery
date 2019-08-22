@@ -44,6 +44,8 @@ func FetchTask() {
 			panic(err)
 		}
 
+		fmt.Print("ID: ")
+		fmt.Println(tasks.ID)
 		fmt.Print("Content: ")
 		fmt.Println(tasks.Content)
 		fmt.Print("Done?: ")
