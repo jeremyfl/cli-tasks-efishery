@@ -8,7 +8,7 @@ import (
 )
 
 // InsertTask it store repositories and return a struct model of it task
-func InsertTask() {
+func InsertTask() internal.Task {
 	guid := xid.New()
 
 	var task = internal.Task{
@@ -31,6 +31,8 @@ func InsertTask() {
 	fmt.Print("Tag: ")
 	fmt.Println(taskDone.Tag)
 	fmt.Println()
+
+	return task
 }
 
 // FetchTask read all of document as a struct model
